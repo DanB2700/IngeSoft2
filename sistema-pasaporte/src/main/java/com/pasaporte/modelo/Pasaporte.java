@@ -2,16 +2,24 @@ package com.pasaporte.modelo;
 
 public class Pasaporte {
     private String id;
-    private Titular titular;
+    private String titular;
     private Pais pais;
+    private String NumeroPasaporte;
+    private Ciudad ciudad;
 
-    public Pasaporte(String id, Titular titular, Pais pais) {
+    public Pasaporte(String id, String titular, Pais pais, String NumeroPasaporte) {
         this.id = id;
         this.titular = titular;
         this.pais = pais;
+        this.NumeroPasaporte= NumeroPasaporte;
+        this.ciudad = ciudad;
     }
 
-    public String getId() {
+    public Pasaporte(Pais pais2, Ciudad ciudad2, Titular titular2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getId() {
         return id;
     }
 
@@ -19,11 +27,11 @@ public class Pasaporte {
         this.id = id;
     }
 
-    public Titular getTitular() {
+    public String getTitular() {
         return titular;
     }
 
-    public void setTitular(Titular titular) {
+    public void setTitular(String titular) {
         this.titular = titular;
     }
 
@@ -43,4 +51,13 @@ public class Pasaporte {
                 ", pais=" + pais +
                 '}';
     }
+
+	public String getNumeroPasaporte() {
+		// TODO Auto-generated method stub
+		return NumeroPasaporte;
+	}
+	
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
 }

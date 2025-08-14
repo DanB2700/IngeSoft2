@@ -5,9 +5,9 @@ import java.util.List;
 public class Pais {
     private String codigo;
     private String nombre;
-    private List<Ciudad> ciudades;
+    private String ciudades;
 
-    public Pais(String codigo, String nombre, List<Ciudad> ciudades) {
+    public Pais(String codigo, String nombre, String ciudades) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.ciudades = ciudades;
@@ -29,11 +29,11 @@ public class Pais {
         this.nombre = nombre;
     }
 
-    public List<Ciudad> getCiudades() {
+    public String getCiudades() {
         return ciudades;
     }
 
-    public void setCiudades(List<Ciudad> ciudades) {
+    public void setCiudades(String ciudades) {
         this.ciudades = ciudades;
     }
 
