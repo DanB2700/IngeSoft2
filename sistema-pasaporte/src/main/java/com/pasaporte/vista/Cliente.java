@@ -1,31 +1,35 @@
 package com.pasaporte.vista;
 
 import com.pasaporte.modelo.Pasaporte;
-import com.pasaporte.modelo.Titular;
-import com.pasaporte.modelo.Visa;
-import com.pasaporte.modelo.Pais;
-import com.pasaporte.modelo.Ciudad;
-
-import java.util.Arrays;
+import com.pasaporte.repositorio.Repositorio;
+import com.pasaporte.repositorio.PasaporteRepositorioSQL;
 
 public class Cliente {
-	public static void main(String[] args) {
-		Ciudad bogota = new Ciudad("BOG", "Bogotá");
-		Ciudad medellin = new Ciudad("MED", "Medellín");
+    public static void main(String[] args) {
+        // Crear un pasaporte de prueba
+        Pasaporte pasaporte = new Pasaporte("P-123456", "A987654", "Julian", "Colombia", "Bogotá");
 
-		Pais colombia = new Pais("+57", "Colombia", Arrays.asList(bogota, medellin));
+        // Repositorio (implementación solo para Pasaporte)
+        Repositorio<Pasaporte> repo = new PasaporteRepositorioSQL();
 
-		Titular titular = new Titular("186454", "Julian", "25-05-2002");
+        // Insertar
+        System.out.println(repo.insertar(pasaporte));
 
-		Pasaporte pasaporte = new Pasaporte("P-123456", titular, colombia, "A987654", bogota);
+        // Buscar
+        Pasaporte buscado = repo.buscar("P-123456");
+        System.out.println("🔎 Buscado: " + (buscado != null ? buscado : "No encontrado"));
 
-		Visa visa = new Visa("V-555", colombia, pasaporte, "Turismo");
+        // Actualizar
+        Pasaporte actualizado = new Pasaporte("P-123456", "A987654", "Julian", "Colombia", "Medellín");
+        System.out.println(repo.actualizar(actualizado));
 
-		System.out.println("=== Datos del Pasaporte ===");
-		System.out.println(pasaporte);
+        // Listar
+        System.out.println("\n=== Lista de Pasaportes ===");
+        for (Pasaporte p : repo.listar()) {
+            System.out.println(p);
+        }
 
-		System.out.println("\n=== Datos de la Visa ===");
-		System.out.println(visa);
-	}
+        // Eliminar
+        System.out.println(repo.eliminar("P-123456"));
+    }
 }
-//prueba

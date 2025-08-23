@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- JavaFX modules -->
+        <!-- JavaFX -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -19,6 +19,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21.0.1</version>
         </dependency>
+
+        <!-- PostgreSQL Driver para Supabase -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -28,7 +35,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.pasaporte.vista.App</mainClass>
+                    <mainClass>com.pasaporte.vista.Cliente</mainClass>
                 </configuration>
             </plugin>
         </plugins>
