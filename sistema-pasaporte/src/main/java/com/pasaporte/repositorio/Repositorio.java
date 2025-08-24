@@ -3,9 +3,9 @@ package com.pasaporte.repositorio;
 import java.util.List;
 
 public interface Repositorio<T> {
-    String insertar(T entidad);
-    String actualizar(T entidad);
-    String eliminar(String id);
-    T buscar(String id);
+    void agregar(T t);
+    void actualizar(T t);
+    void eliminar(String id);
     List<T> listar();
+    T buscarPorId(String id);
 }

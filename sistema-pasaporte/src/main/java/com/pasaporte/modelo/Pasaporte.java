@@ -1,48 +1,25 @@
 package com.pasaporte.modelo;
 
 public class Pasaporte {
-	 private String id;
-	    private String numeroPasaporte;  // ahora se llama igual que la BD
-	    private String titular;
-	    private String pais;
-	    private String ciudad;
+    private String id;
+    private Titular titular;
+    private Pais pais;
 
-	    public Pasaporte(String id, String numeroPasaporte, String titular, String pais, String ciudad) {
-	        this.id = id;
-	        this.numeroPasaporte = numeroPasaporte;
-	        this.titular = titular;
-	        this.pais = pais;
-	        this.ciudad = ciudad;
-	    }
+    public Pasaporte(String id, Titular titular, Pais pais) {
+        this.id = id;
+        this.titular = titular;
+        this.pais = pais;
+    }
 
-	    public String getId() {
-	        return id;
-	    }
+    public String getId() { return id; }
+    public Titular getTitular() { return titular; }
+    public Pais getPais() { return pais; }
 
-	    public String getNumeroPasaporte() {
-	        return numeroPasaporte;
-	    }
+    public void setTitular(Titular titular) { this.titular = titular; }
+    public void setPais(Pais pais) { this.pais = pais; }
 
-	    public String getTitular() {
-	        return titular;
-	    }
-
-	    public String getPais() {
-	        return pais;
-	    }
-
-	    public String getCiudad() {
-	        return ciudad;
-	    }
-
-	    @Override
-	    public String toString() {
-	        return "Pasaporte{" +
-	                "id='" + id + '\'' +
-	                ", numeroPasaporte='" + numeroPasaporte + '\'' +
-	                ", titular='" + titular + '\'' +
-	                ", pais='" + pais + '\'' +
-	                ", ciudad='" + ciudad + '\'' +
-	                '}';
-	    }
-	}
+    @Override
+    public String toString() {
+        return "Pasaporte " + id + " | Titular: " + titular + " | País: " + pais;
+    }
+}

@@ -1,57 +1,22 @@
 package com.pasaporte.modelo;
 
 public class Visa {
-	private String numero;
-	private Pais pais;
-	private Pasaporte pasaporte;
-	private String tipo;
+    private String numero;
+    private Pais pais;
+    private Pasaporte pasaporte;
 
-	public Visa(String numero, Pais pais, Pasaporte pasaporte, String tipo) {
-		this.numero = numero;
-		this.pais = pais;
-		this.pasaporte = pasaporte;
-		this.tipo = tipo;
-	}
+    public Visa(String numero, Pais pais, Pasaporte pasaporte) {
+        this.numero = numero;
+        this.pais = pais;
+        this.pasaporte = pasaporte;
+    }
 
-	public String getNumero() {
-		return numero;
-	}
+    public String getNumero() { return numero; }
+    public Pais getPais() { return pais; }
+    public Pasaporte getPasaporte() { return pasaporte; }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public Pais getPais() {
-		return pais;
-	}
-
-	public void setPais(Pais pais) {
-		this.pais = pais;
-	}
-
-	public Pasaporte getPasaporte() {
-		return pasaporte;
-	}
-
-	public void setPasaporte(Pasaporte pasaporte) {
-		this.pasaporte = pasaporte;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	@Override
-	public String toString() {
-        return "Visa{" +
-                "numero='" + numero + '\'' +
-                ", pais=" + pais +
-                ", pasaporte=" + pasaporte.getNumeroPasaporte() +
-                ", tipo='" + tipo + '\'' +
-                '}';
+    @Override
+    public String toString() {
+        return "Visa " + numero + " | País: " + pais + " | Pasaporte: " + pasaporte.getId();
     }
 }

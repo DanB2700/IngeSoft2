@@ -1,35 +1,45 @@
 package com.pasaporte.vista;
 
-import com.pasaporte.modelo.Pasaporte;
-import com.pasaporte.repositorio.Repositorio;
-import com.pasaporte.repositorio.PasaporteRepositorioSQL;
+import com.pasaporte.modelo.*;
+import com.pasaporte.repositorio.*;
+
+import java.util.*;
 
 public class Cliente {
     public static void main(String[] args) {
-        // Crear un pasaporte de prueba
-        Pasaporte pasaporte = new Pasaporte("P-123456", "A987654", "Julian", "Colombia", "Bogotá");
+        // Crear repositorio para Pasaporte
+        Repositorio<Pasaporte> pasaporteRepo = new PasaporteRepositorioSQL();
 
-        // Repositorio (implementación solo para Pasaporte)
-        Repositorio<Pasaporte> repo = new PasaporteRepositorioSQL();
+        // Crear objetos Ciudad, País y Titular
+        Ciudad ciudad1 = new Ciudad("01", "Bogotá");
+        List<Ciudad> ciudades = new ArrayList<>();
+        ciudades.add(ciudad1);
 
-        // Insertar
-        System.out.println(repo.insertar(pasaporte));
+        Pais colombia = new Pais("CO", "Colombia", ciudades);
+        Titular titular = new Titular("T1", "Daniel", "2025-08-23");
 
-        // Buscar
-        Pasaporte buscado = repo.buscar("P-123456");
-        System.out.println("🔎 Buscado: " + (buscado != null ? buscado : "No encontrado"));
+        // Crear pasaporte
+        Pasaporte pasaporte = new Pasaporte("P1", titular, colombia);
+        pasaporteRepo.agregar(pasaporte);
+        System.out.println("🆕 Pasaporte creado: " + pasaporte);
 
-        // Actualizar
-        Pasaporte actualizado = new Pasaporte("P-123456", "A987654", "Julian", "Colombia", "Medellín");
-        System.out.println(repo.actualizar(actualizado));
+        // Mostrar lista actual
+        System.out.println("📋 Lista actual: " + pasaporteRepo.listar());
 
-        // Listar
-        System.out.println("\n=== Lista de Pasaportes ===");
-        for (Pasaporte p : repo.listar()) {
-            System.out.println(p);
-        }
+        // Actualizar titular del pasaporte
+        Titular titularActualizado = new Titular("T1", "Daniel Manrique", "2025-08-23");
+        pasaporte.setTitular(titularActualizado);
+        pasaporteRepo.actualizar(pasaporte);
+        System.out.println("✏️ Pasaporte actualizado: " + pasaporte);
 
-        // Eliminar
-        System.out.println(repo.eliminar("P-123456"));
+        // Mostrar lista después de actualizar
+        System.out.println("📋 Lista después de actualizar: " + pasaporteRepo.listar());
+
+        // Eliminar pasaporte
+        pasaporteRepo.eliminar("P1");
+        System.out.println("🗑️ Pasaporte eliminado con id: P1");
+
+        // Mostrar lista final
+        System.out.println("📋 Lista final: " + pasaporteRepo.listar());
     }
 }
