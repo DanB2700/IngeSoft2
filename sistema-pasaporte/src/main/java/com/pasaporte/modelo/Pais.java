@@ -1,25 +1,17 @@
 package com.pasaporte.modelo;
 
-import java.util.List;
-
 public class Pais {
-    private String codigo;
+    private int id;
     private String nombre;
-    private List<Ciudad> ciudad;
 
-    public Pais(String codigo, String nombre, List<Ciudad> ciudad) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.ciudad = ciudad;
-    }
+    public Pais() {}
+    public Pais(int id, String nombre){ this.id=id; this.nombre=nombre; }
+    public Pais(String nombre){ this.nombre=nombre; }
 
-    public String getCodigo() { return codigo; }
-    public String getNombre() { return nombre; }
-    public List<Ciudad> getCiudad() { return ciudad; }
+    public int getId(){ return id; }
+    public void setId(int id){ this.id=id; }
+    public String getNombre(){ return nombre; }
+    public void setNombre(String nombre){ this.nombre=nombre; }
 
-    @Override
-    public String toString() {
-        return nombre + " [" + codigo + "]" +
-               (ciudad != null && !ciudad.isEmpty() ? ", Ciudades: " + ciudad : "");
-    }
+    @Override public String toString(){ return "Pais{id="+id+", nombre='"+nombre+"'}"; }
 }

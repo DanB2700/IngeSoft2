@@ -1,22 +1,20 @@
 package com.pasaporte.modelo;
 
 public class Titular {
-    private String id;
+    private int id;
     private String nombre;
-    private String fecha;
+    private String apellido;
 
-    public Titular(String id, String nombre, String fecha) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fecha = fecha;
-    }
+    public Titular() {}
+    public Titular(int id, String nombre, String apellido){ this.id=id; this.nombre=nombre; this.apellido=apellido; }
+    public Titular(String nombre, String apellido){ this.nombre=nombre; this.apellido=apellido; }
 
-    public String getId() { return id; }
-    public String getNombre() { return nombre; }
-    public String getFecha() { return fecha; }
+    public int getId(){ return id; }
+    public void setId(int id){ this.id=id; }
+    public String getNombre(){ return nombre; }
+    public void setNombre(String nombre){ this.nombre=nombre; }
+    public String getApellido(){ return apellido; }
+    public void setApellido(String apellido){ this.apellido=apellido; }
 
-    @Override
-    public String toString() {
-        return nombre + " (ID: " + id + ", Fecha: " + fecha + ")";
-    }
+    @Override public String toString(){ return "Titular{id="+id+", nombre='"+nombre+"', apellido='"+apellido+"'}"; }
 }

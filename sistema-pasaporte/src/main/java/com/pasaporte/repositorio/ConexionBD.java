@@ -5,17 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBD {
+    private static final String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
+    private static final String USER = "postgres.qtwbancwlbohtgbnhskr";
+    private static final String PASSWORD = "Politecnico123*";
 
-    private static final String URL = "jdbc:postgresql://aws-1-us-east-1.pooler.supabase.com:5432/postgres";
-    private static final String USER = "postgres.cwqngcvrtautiavvslck";
-    private static final String PASSWORD = "Politecnico123*"; // 👈 tu clave
-
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConexion() {
+        Connection conn = null;
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("✅ Conexión exitosa a Supabase!");
         } catch (SQLException e) {
-            System.out.println("❌ Error al conectar a Supabase: " + e.getMessage());
-            throw e;
+            System.out.println("❌ Error de conexión: " + e.getMessage());
         }
+        return conn;
+    }
+
+    public static void main(String[] args) {
+        getConexion();
     }
 }
+

@@ -1,25 +1,33 @@
 package com.pasaporte.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pasaporte {
-    private String id;
+    private String numero;
     private Titular titular;
     private Pais pais;
+    private Ciudad ciudad;
+    private List<Visa> visas = new ArrayList<>();
 
-    public Pasaporte(String id, Titular titular, Pais pais) {
-        this.id = id;
-        this.titular = titular;
-        this.pais = pais;
+    public Pasaporte() {}
+    public Pasaporte(String numero, Titular titular, Pais pais, Ciudad ciudad){
+        this.numero=numero; this.titular=titular; this.pais=pais; this.ciudad=ciudad;
     }
 
-    public String getId() { return id; }
-    public Titular getTitular() { return titular; }
-    public Pais getPais() { return pais; }
+    public String getNumero(){ return numero; }
+    public void setNumero(String numero){ this.numero=numero; }
+    public Titular getTitular(){ return titular; }
+    public void setTitular(Titular titular){ this.titular=titular; }
+    public Pais getPais(){ return pais; }
+    public void setPais(Pais pais){ this.pais=pais; }
+    public Ciudad getCiudad(){ return ciudad; }
+    public void setCiudad(Ciudad ciudad){ this.ciudad=ciudad; }
+    public List<Visa> getVisas(){ return visas; }
+    public void setVisas(List<Visa> visas){ this.visas=visas; }
 
-    public void setTitular(Titular titular) { this.titular = titular; }
-    public void setPais(Pais pais) { this.pais = pais; }
-
-    @Override
-    public String toString() {
-        return "Pasaporte " + id + " | Titular: " + titular + " | País: " + pais;
+    @Override public String toString(){
+        return "Pasaporte{numero='"+numero+"', titular="+titular+", pais="+pais+", ciudad="+ciudad+", visas="+visas+"}";
     }
 }
+
