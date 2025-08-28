@@ -10,4 +10,3 @@ public interface Repositorio<T> {
     T actualizar(String id, T entidad);
     Optional<T> eliminar(String id);
 }
-

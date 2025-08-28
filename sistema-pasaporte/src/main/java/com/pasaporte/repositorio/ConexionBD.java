@@ -9,19 +9,15 @@ public class ConexionBD {
     private static final String USER = "postgres.qtwbancwlbohtgbnhskr";
     private static final String PASSWORD = "Politecnico123*";
 
+    private ConexionBD() {}
+
+    // Devuelve SIEMPRE una conexión nueva y válida
     public static Connection getConexion() {
-        Connection conn = null;
         try {
-            conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("✅ Conexión exitosa a Supabase!");
+            return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             System.out.println("❌ Error de conexión: " + e.getMessage());
+            return null;
         }
-        return conn;
-    }
-
-    public static void main(String[] args) {
-        getConexion();
     }
 }
-
