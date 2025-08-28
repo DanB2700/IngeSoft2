@@ -4,9 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Repositorio<T> {
-    T crear(T entidad);
-    Optional<T> leer(String id);
-    List<T> listar();
-    T actualizar(String id, T entidad);
-    Optional<T> eliminar(String id);
+
+void crear(T t); // CRUD - Create
+
+List<T> listar(); // CRUD - Read
+
+void actualizar(T t); // CRUD - Update
+
+void eliminar(String id); // CRUD - Delete
+
+List<T> buscar(String criterio); // Requerimiento de bsúsqueda
+
 }

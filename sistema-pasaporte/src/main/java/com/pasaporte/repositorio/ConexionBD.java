@@ -5,19 +5,32 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBD {
-    private static final String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres";
-    private static final String USER = "postgres.qtwbancwlbohtgbnhskr";
-    private static final String PASSWORD = "Politecnico123*";
+    // Patrón Singleton
+    private static ConexionBD instancia;  
+    private Connection conexion;
 
-    private ConexionBD() {}
+    private static final String URL = "jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:5432/postgres"; // cambia con tu BD
+    private static final String USUARIO = "postgres.qtwbancwlbohtgbnhskr"; // cambia usuario
+    private static final String CLAVE= "Politecnico123*";  // cambia contraseña
 
-    // Devuelve SIEMPRE una conexión nueva y válida
-    public static Connection getConexion() {
+    private ConexionBD() {
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
+            System.out.println("✅ Conexión exitosa a la base de datos");
         } catch (SQLException e) {
-            System.out.println("❌ Error de conexión: " + e.getMessage());
-            return null;
+            System.out.println("❌ Error en la conexión: " + e.getMessage());
         }
+    }
+
+    // Método para obtener la instancia única
+    public static ConexionBD getInstancia() {
+        if (instancia == null) {
+            instancia = new ConexionBD();
+        }
+        return instancia;
+    }
+
+    public Connection getConexion() {
+        return conexion;
     }
 }

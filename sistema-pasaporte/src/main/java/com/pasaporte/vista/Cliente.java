@@ -20,13 +20,16 @@ public class Cliente {
         System.out.println("\n📋 Listado de pasaportes:");
         dao.listar().forEach(System.out::println);
 
-        // Actualizar
+        /* Actualizar
         pasaporte.getTitular().setNombre("Oscar Modificado");
-        dao.actualizar(pasaporte.getNumero(), pasaporte);
+        dao.actualizar(pasaporte.getNumero(), pasaporte)*/
 
         // Mostrar de nuevo
         System.out.println("\n📋 Listado después de actualizar:");
         dao.listar().forEach(System.out::println);
+        
+        System.out.println("📌 Pasaportes con 'A':");
+        dao.buscar("1").forEach(p -> System.out.println(p.getNumero()));
 
         // Eliminar con confirmación
         Scanner sc = new Scanner(System.in);
@@ -41,5 +44,6 @@ public class Cliente {
         // Mostrar final
         System.out.println("\n📋 Listado final:");
         dao.listar().forEach(System.out::println);
+        
     }
 }
